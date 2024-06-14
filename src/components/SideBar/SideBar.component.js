@@ -45,7 +45,7 @@ const SideBar = ({ data }) => {
         let dataElementCode = {};
         data.dataElementList.dataElements.forEach((de) => {
           let attribute = de.attributeValues.filter(
-            (attr) => attr.attribute.id == "cFla1yAh9S2"
+            (attr) => attr.attribute.id == "iEnxrrNZkG9"
           );
           if (attribute.length) dataElementCode[de.id] = attribute[0].value;
         });
@@ -58,7 +58,7 @@ const SideBar = ({ data }) => {
           if (
             dataSet.attributeValues.find(
               (attrVal) =>
-                attrVal.attribute.id == "E81OOV70wYM" && attrVal.value == "true"
+                attrVal.attribute.id == "bUiUwQkTSrD" && attrVal.value == "true"
             )
           ) {
             var modifiedDataSet = dataSet;

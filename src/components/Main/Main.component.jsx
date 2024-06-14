@@ -70,7 +70,7 @@ const Main = () => {
                 ) {
                   let ageCategory = [];
                   let calculatedAge = event.dataValues.filter(
-                    (dv) => dv.dataElement == "OoP80j63u8N"
+                    (dv) => dv.dataElement == "CZKmUs2suTW"
                   );
                   if (calculatedAge.length) {
                     for (let age in AgeGroup) {
@@ -93,7 +93,7 @@ const Main = () => {
                         let element =
                           dataSet.dataElements[
                             `${dataElements[dataValue.dataElement]}+${
-                              teiAttr["MaBiIrJDIWA"]
+                              teiAttr["QO7Pp5yFNYV"]
                             }, ${age}`
                           ];
                         if (element) {
@@ -107,7 +107,7 @@ const Main = () => {
                         let element =
                           dataSet.dataElements[
                             `${dataElements[dataValue.dataElement]}+${
-                              teiAttr["MaBiIrJDIWA"]
+                              teiAttr["QO7Pp5yFNYV"]
                             }, ${age}`
                           ];
                         if (element) {

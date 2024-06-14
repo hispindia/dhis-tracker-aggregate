@@ -10,10 +10,10 @@ export const dataSet = {
         body: JSON.stringify(dataValueSets),
       });
       let resData = await response.json();
-      if (resData.response.status == "SUCCESS") {
+      if (resData.status == "SUCCESS") {
         return {
           conflict: "",
-          status: resData.response.status
+          status: resData.status
         };
       }
       if (resData.status == "ERROR") {
