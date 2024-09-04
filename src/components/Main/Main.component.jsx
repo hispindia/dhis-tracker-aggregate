@@ -70,7 +70,7 @@ const Main = () => {
                 ) {
                   let ageCategory = [];
                   let calculatedAge = event.dataValues.filter(
-                    (dv) => dv.dataElement == "CZKmUs2suTW"
+                    (dv) => dv.dataElement == "CZKmUs2suTW" //Data Element: Age at visit
                   );
                   if (calculatedAge.length) {
                     for (let age in AgeGroup) {
@@ -93,7 +93,7 @@ const Main = () => {
                         let element =
                           dataSet.dataElements[
                             `${dataElements[dataValue.dataElement]}+${
-                              teiAttr["QO7Pp5yFNYV"]
+                              teiAttr["QO7Pp5yFNYV"] //trackedEntityAttribute: Gender
                             }, ${age}`
                           ];
                         if (element) {
@@ -107,7 +107,7 @@ const Main = () => {
                         let element =
                           dataSet.dataElements[
                             `${dataElements[dataValue.dataElement]}+${
-                              teiAttr["QO7Pp5yFNYV"]
+                              teiAttr["QO7Pp5yFNYV"] //trackedEntityAttribute: Gender
                             }, ${age}`
                           ];
                         if (element) {
