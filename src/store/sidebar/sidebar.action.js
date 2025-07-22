@@ -1,5 +1,10 @@
 import { SIDEBAR_ACTION_TYPES } from "./sidebar.reducer";
 
+export const setMe = (me) => ({
+  type: SIDEBAR_ACTION_TYPES.SET_ME,
+  payload: me,
+});
+
 export const setPrograms = (programs) => ({
   type: SIDEBAR_ACTION_TYPES.SET_PROGRAMS,
   payload: programs,

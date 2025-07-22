@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setDataSet, setProgram, setProgramSheet } from "../../store/main/main.action";
+import { setDataSet, setProgram, setProgramSheet, setStage } from "../../store/main/main.action";
 
 export const Programs = () => {
   const dispatch = useDispatch();
-  const programs = useSelector((state) => state.sidebar.programs);
+  const {programs, me} = useSelector((state) => state.sidebar);
   const orgUnit = useSelector((state) => state.outree.clickedOU);
   const [ouPrograms, setOUPrograms] = useState([]);
 
@@ -26,6 +26,17 @@ export const Programs = () => {
   const handleChange = (ev) => {
     const { value } = ev.target;
     if (value) {
+      const program = programs.find(program => program.id == value);
+      const stages = program?.programStages.filter(stage => {
+        var hasUser = false;
+        for(let user in stage.sharing.users) {
+          if (stage.sharing.users[user].id == me && stage.sharing.users[user].access.slice(2, 4) === "rw") {
+            hasUser = true
+          }
+        }
+        return hasUser;
+      }).map(stage => stage.id);
+      if(stages.length) dispatch(setStage(stages));
       dispatch(setProgram(value));
     }
   };

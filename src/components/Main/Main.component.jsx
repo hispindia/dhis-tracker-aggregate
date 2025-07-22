@@ -9,12 +9,8 @@ import { AgeGroup } from "../constants";
 const Main = () => {
   const dispatch = useDispatch();
   const clickedOU = useSelector((state) => state.outree.clickedOU);
-  const dataElements = useSelector((state) => state.sidebar.dataElements);
-  const dataSetElements = useSelector((state) => state.sidebar.dataSetElements);
-  const dataSet = useSelector((state) => state.main.dataSet);
-  const program = useSelector((state) => state.main.program);
-  const period = useSelector((state) => state.main.period);
-  const status = useSelector((state) => state.main.status);
+  const {dataElements, dataSetElements} = useSelector((state) => state.sidebar);
+  const {dataSet, program, stage, period, status} = useSelector((state) => state.main);
 
   const [overView, setOverview] = useState({});
   const [process, setProcess] = useState([]);
@@ -28,13 +24,17 @@ const Main = () => {
         const process = [];
         process.push("Fetching clients.");
         setProcess([...process]);
-        let resTeiList = await ApiService.sqlViews.get(
-          clickedOU.id,
-          program,
-          date.startDate,
-          date.endDate
-        );
-
+        const resTeiList = []
+        for(let stageId of stage) {
+          const res = await ApiService.sqlViews.get(
+            clickedOU.id,
+            program,
+            stageId,
+            date.startDate,
+            date.endDate
+          );
+          resTeiList.push(res);  
+        }
         process.push(`${resTeiList.length} clients present`);
         setProcess([...process]);
         process.push("");

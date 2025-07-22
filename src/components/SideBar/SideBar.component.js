@@ -13,6 +13,7 @@ import {
   setDataElements,
   setDataSetElements,
   setDatasets,
+  setMe,
   setPrograms,
 } from "../../store/sidebar/sidebar.action";
 import { Programs } from "./Programs.component";
@@ -27,6 +28,7 @@ import { Period } from "./Period.component";
 const SideBar = ({ data }) => {
   const dispatch = useDispatch();
 
+  const {status} = useSelector((state) => state.main);
   const selectedOU = useSelector((state) => state.outree.clickedOU);
 
   useEffect(() => {
@@ -37,6 +39,7 @@ const SideBar = ({ data }) => {
           data.me.organisationUnits = data.me.organisationUnits.sort((a, b) =>
             a.name.localeCompare(b.name)
           );
+        dispatch(setMe(data.me.id))
         dispatch(setUserOU(data.me.organisationUnits));
         dispatch(setClickedOU(data.me.organisationUnits[0]));
       }
@@ -118,6 +121,7 @@ const SideBar = ({ data }) => {
       </div>
       <button
         type="button"
+        disabled={status}
         onClick={() => dispatch(setStatus(true))}
         className={"btn btn-primary w-100 my-5"}
       >

@@ -5,6 +5,11 @@ export const setProgram = (program) => ({
   payload: program,
 });
 
+export const setStage = (stage) => ({
+  type: MAIN_ACTION_TYPES.SET_STAGE,
+  payload: stage,
+});
+
 export const setDataSet = (dataset) => ({
   type: MAIN_ACTION_TYPES.SET_DATA_SET,
   payload: dataset,

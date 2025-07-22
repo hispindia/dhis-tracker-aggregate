@@ -1,6 +1,7 @@
 export const MAIN_ACTION_TYPES = {
     SET_STATUS: "SET_STATUS",
     SET_PROGRAM: 'SET_PROGRAM',
+    SET_STAGE: 'SET_STAGE',
     SET_DATA_SET: 'SET_DATA_SET',
     SET_PERIOD: 'SET_PERIOD',
   };
@@ -8,6 +9,7 @@ export const MAIN_ACTION_TYPES = {
   export const INITIAL_STATE = {
     status: false,
     program: null,
+    stage: [],
     dataSet: null,
     period: null,
   };
@@ -17,6 +19,8 @@ export const MAIN_ACTION_TYPES = {
     switch (type) {
       case MAIN_ACTION_TYPES.SET_PROGRAM:
         return { ...state, program: payload };
+      case MAIN_ACTION_TYPES.SET_STAGE:
+          return { ...state, stage: payload };
       case MAIN_ACTION_TYPES.SET_DATA_SET:
         return { ...state, dataSet: payload };
       case MAIN_ACTION_TYPES.SET_STATUS:
