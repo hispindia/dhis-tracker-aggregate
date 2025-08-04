@@ -30,7 +30,13 @@ export const Programs = () => {
       const stages = program?.programStages.filter(stage => {
         var hasUser = false;
         for(let user in stage.sharing.users) {
-          if (stage.sharing.users[user].id == me && stage.sharing.users[user].access.slice(2, 4) === "rw") {
+          if (stage.sharing.users[user].id == me.id && stage.sharing.users[user].access.slice(2, 4) === "rw") {
+            hasUser = true
+          }
+        }
+        for(let user in stage.sharing.userGroups) {
+          const group = me.userGroups.find(group => group.id == stage.sharing.userGroups[user].id);
+          if (group && stage.sharing.userGroups[user].access.slice(2, 4) === "rw") {
             hasUser = true
           }
         }

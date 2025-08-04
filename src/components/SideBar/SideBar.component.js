@@ -39,7 +39,7 @@ const SideBar = ({ data }) => {
           data.me.organisationUnits = data.me.organisationUnits.sort((a, b) =>
             a.name.localeCompare(b.name)
           );
-        dispatch(setMe(data.me.id))
+        dispatch(setMe(data.me))
         dispatch(setUserOU(data.me.organisationUnits));
         dispatch(setClickedOU(data.me.organisationUnits[0]));
       }
