@@ -1,3 +1,10 @@
+export const sqlViewId = "VJklpW91PB0"; //sql views
+export const gender = "QO7Pp5yFNYV"; //data element gender
+export const ageAtVisit = "CZKmUs2suTW"; //data element age at visit
+export const trackerToAggMapping = "iEnxrrNZkG9";
+export const dataSetSharing = "bUiUwQkTSrD"
+
+
 export const InitialQuery = {
   me: {
     resource: "me.json",
