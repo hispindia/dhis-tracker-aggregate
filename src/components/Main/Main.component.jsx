@@ -93,7 +93,7 @@ const Main = () => {
                         let element =
                           dataSet.dataElements[
                             `${dataElements[dataValue.dataElement]}+${
-                               gender
+                               teiAttr[`${gender}`]
                             }, ${age}`
                           ];
                         if (element) {
@@ -107,7 +107,7 @@ const Main = () => {
                         let element =
                           dataSet.dataElements[
                             `${dataElements[dataValue.dataElement]}+${
-                               gender
+                               teiAttr[`${gender}`]
                             }, ${age}`
                           ];
                         if (element) {
