@@ -23,6 +23,7 @@ import {
 } from "../../store/main/main.action";
 import { DataSets } from "./Datasets.component";
 import { Period } from "./Period.component";
+import { dataSetSharing, trackerToAggMapping } from "../constants";
 
 const SideBar = ({ data }) => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const SideBar = ({ data }) => {
         let dataElementCode = {};
         data.dataElementList.dataElements.forEach((de) => {
           let attribute = de.attributeValues.filter(
-            (attr) => attr.attribute.id == "cFla1yAh9S2"
+            (attr) => attr.attribute.id == `${trackerToAggMapping}`
           );
           if (attribute.length) dataElementCode[de.id] = attribute[0].value;
         });
@@ -58,7 +59,7 @@ const SideBar = ({ data }) => {
           if (
             dataSet.attributeValues.find(
               (attrVal) =>
-                attrVal.attribute.id == "E81OOV70wYM" && attrVal.value == "true"
+                attrVal.attribute.id == `${dataSetSharing}` && attrVal.value == "true"
             )
           ) {
             var modifiedDataSet = dataSet;

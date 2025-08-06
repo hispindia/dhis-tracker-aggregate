@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ApiService } from "../../services/api";
 import { formatDate } from "../utils.func";
 import { setStatus } from "../../store/main/main.action";
-import { AgeGroup } from "../constants";
+import { gender, AgeGroup, ageAtVisit } from "../constants";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -70,7 +70,7 @@ const Main = () => {
                 ) {
                   let ageCategory = [];
                   let calculatedAge = event.dataValues.filter(
-                    (dv) => dv.dataElement == "OoP80j63u8N"
+                    (dv) => dv.dataElement == `${ageAtVisit}`
                   );
                   if (calculatedAge.length) {
                     for (let age in AgeGroup) {
@@ -93,7 +93,7 @@ const Main = () => {
                         let element =
                           dataSet.dataElements[
                             `${dataElements[dataValue.dataElement]}+${
-                              teiAttr["MaBiIrJDIWA"]
+                               gender
                             }, ${age}`
                           ];
                         if (element) {
@@ -107,7 +107,7 @@ const Main = () => {
                         let element =
                           dataSet.dataElements[
                             `${dataElements[dataValue.dataElement]}+${
-                              teiAttr["MaBiIrJDIWA"]
+                               gender
                             }, ${age}`
                           ];
                         if (element) {
