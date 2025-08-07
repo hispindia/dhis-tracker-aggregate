@@ -13,7 +13,6 @@ import {
   setDataElements,
   setDataSetElements,
   setDatasets,
-  setMe,
   setPrograms,
 } from "../../store/sidebar/sidebar.action";
 import { Programs } from "./Programs.component";
@@ -24,11 +23,11 @@ import {
 } from "../../store/main/main.action";
 import { DataSets } from "./Datasets.component";
 import { Period } from "./Period.component";
+import { dataSetSharing, trackerToAggMapping } from "../constants";
 
 const SideBar = ({ data }) => {
   const dispatch = useDispatch();
 
-  const {status} = useSelector((state) => state.main);
   const selectedOU = useSelector((state) => state.outree.clickedOU);
 
   useEffect(() => {
@@ -39,7 +38,6 @@ const SideBar = ({ data }) => {
           data.me.organisationUnits = data.me.organisationUnits.sort((a, b) =>
             a.name.localeCompare(b.name)
           );
-        dispatch(setMe(data.me))
         dispatch(setUserOU(data.me.organisationUnits));
         dispatch(setClickedOU(data.me.organisationUnits[0]));
       }
@@ -48,7 +46,7 @@ const SideBar = ({ data }) => {
         let dataElementCode = {};
         data.dataElementList.dataElements.forEach((de) => {
           let attribute = de.attributeValues.filter(
-            (attr) => attr.attribute.id == "cFla1yAh9S2"
+            (attr) => attr.attribute.id == `${trackerToAggMapping}`
           );
           if (attribute.length) dataElementCode[de.id] = attribute[0].value;
         });
@@ -61,7 +59,7 @@ const SideBar = ({ data }) => {
           if (
             dataSet.attributeValues.find(
               (attrVal) =>
-                attrVal.attribute.id == "E81OOV70wYM" && attrVal.value == "true"
+                attrVal.attribute.id == `${dataSetSharing}` && attrVal.value == "true"
             )
           ) {
             var modifiedDataSet = dataSet;
@@ -121,7 +119,6 @@ const SideBar = ({ data }) => {
       </div>
       <button
         type="button"
-        disabled={status}
         onClick={() => dispatch(setStatus(true))}
         className={"btn btn-primary w-100 my-5"}
       >
