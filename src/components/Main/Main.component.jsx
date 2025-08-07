@@ -24,7 +24,7 @@ const Main = () => {
         const process = [];
         process.push("Fetching clients.");
         setProcess([...process]);
-        const resTeiList = []
+        var resTeiList = []
         for(let stageId of stage) {
           const res = await ApiService.sqlViews.get(
             clickedOU.id,
@@ -33,7 +33,7 @@ const Main = () => {
             date.startDate,
             date.endDate
           );
-          resTeiList.push(res);  
+          if(res.length) resTeiList = [...resTeiList, ...res];  
         }
         process.push(`${resTeiList.length} clients present`);
         setProcess([...process]);

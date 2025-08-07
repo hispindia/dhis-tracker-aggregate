@@ -13,6 +13,7 @@ import {
   setDataElements,
   setDataSetElements,
   setDatasets,
+  setMe,
   setPrograms,
 } from "../../store/sidebar/sidebar.action";
 import { Programs } from "./Programs.component";
@@ -38,6 +39,7 @@ const SideBar = ({ data }) => {
           data.me.organisationUnits = data.me.organisationUnits.sort((a, b) =>
             a.name.localeCompare(b.name)
           );
+        dispatch(setMe(data.me))
         dispatch(setUserOU(data.me.organisationUnits));
         dispatch(setClickedOU(data.me.organisationUnits[0]));
       }
