@@ -87,32 +87,29 @@ const Main = () => {
                   event.dataValues.forEach((dataValue) => {
                     ageCategory.forEach((age) => {
                       if (
-                        dataValue.value == "true" &&
-                        dataElements[dataValue.dataElement]
-                      ) {
-                        let element =
-                          dataSet.dataElements[
-                            `${dataElements[dataValue.dataElement]}+${
-                               teiAttr[`${gender}`]
-                            }, ${age}`
-                          ];
-                        if (element) {
-                          if (!dataValues[element]) dataValues[element] = 0;
-                          dataValues[element] += 1;
-                        }
-                      } else if (
                         !Number.isNaN(dataValue.value) &&
                         dataElements[dataValue.dataElement]
                       ) {
                         let element =
                           dataSet.dataElements[
                             `${dataElements[dataValue.dataElement]}+${
-                               teiAttr[`${gender}`]
+                               teiAttr[gender]
                             }, ${age}`
                           ];
                         if (element) {
                           if (!dataValues[element]) dataValues[element] = 0;
                           dataValues[element] += Number(dataValue.value);
+                        }
+                      } else if (dataSet.dataElements[`${dataValue.value}+${teiAttr[gender]}, ${age}`]) {
+                        let element =
+                          dataSet.dataElements[
+                            `${dataValue.value}+${
+                              teiAttr[gender]
+                            }, ${age}`
+                          ];
+                        if (element) {
+                          if (!dataValues[element]) dataValues[element] = 0;
+                          dataValues[element] += 1;
                         }
                       }
                     });
