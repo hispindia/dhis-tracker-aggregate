@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ApiService } from "../../services/api";
 import { formatDate } from "../utils.func";
 import { setStatus } from "../../store/main/main.action";
-import { gender, AgeGroup, ageAtVisit } from "../constants";
+import { gender, AgeGroup, ageAtVisit, fpUserType } from "../constants";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -82,6 +82,25 @@ const Main = () => {
                         ageCategory.push(age);
                       }
                     }
+                  }
+                  
+                  if(teiAttr[fpUserType] == "Current User") {
+                    resTei.attributes.forEach((attr) => {
+                        ageCategory.forEach((age) => {
+                            if (dataSet.dataElements[`${attr.value}+${teiAttr[gender]}, ${age}`]) {
+                                let element =
+                                dataSet.dataElements[
+                                    `${attr.value}+${
+                                    teiAttr[gender]
+                                    }, ${age}`
+                                ];
+                                if (element) {
+                                    if (!dataValues[element]) dataValues[element] = 0;
+                                    dataValues[element] += 1;
+                                }
+                            }
+                        });
+                    });
                   }
 
                   event.dataValues.forEach((dataValue) => {

@@ -2,7 +2,8 @@ export const sqlViewId = "WoyDQUX6Ctd"; //sql views
 export const gender = "GmPJSP6dMCT"; //data element gender
 export const ageAtVisit = "cAFXU4cKwze"; //data element age at visit
 export const trackerToAggMapping = "cFla1yAh9S2";
-export const dataSetSharing = "E81OOV70wYM"
+export const dataSetSharing = "E81OOV70wYM";
+export const fpUserType = "j1oRF6d7JP1"
 
 export const InitialQuery = {
   me: {
